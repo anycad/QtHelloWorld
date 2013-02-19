@@ -48,6 +48,8 @@ MainWindow::MainWindow()
     mdiArea = new QMdiArea;
     mdiArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     mdiArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    mdiArea->setViewMode(QMdiArea::TabbedView);
+
     setCentralWidget(mdiArea);
     connect(mdiArea, SIGNAL(subWindowActivated(QMdiSubWindow*)),
             this, SLOT(updateMenus()));
@@ -59,6 +61,8 @@ MainWindow::MainWindow()
     createMenus();
     createToolBars();
     createStatusBar();
+    createDockWindow();
+
     updateMenus();
 
     readSettings();
@@ -408,4 +412,41 @@ void MainWindow::setActiveSubWindow(QWidget *window)
     if (!window)
         return;
     mdiArea->setActiveSubWindow(qobject_cast<QMdiSubWindow *>(window));
+}
+
+
+void MainWindow::createDockWindow()
+{
+   {
+      QDockWidget *dock = new QDockWidget(tr("Browser"), this);
+      dock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+      dockingList = new QListWidget(dock);
+      dockingList->addItems(QStringList()
+         << "1"
+         << "2"
+         << "3"
+         << "4"
+         << "5"
+         << "6");
+      dock->setWidget(dockingList);
+      addDockWidget(Qt::LeftDockWidgetArea, dock);
+      editMenu->addAction(dock->toggleViewAction());
+   }
+
+   {
+      QDockWidget *dock = new QDockWidget(tr("Output"), this);
+      dock->setAllowedAreas(Qt::AllDockWidgetAreas);
+      outputList = new QListWidget(dock);
+      outputList->addItems(QStringList()
+         << "1"
+         << "2"
+         << "3"
+         << "4"
+         << "5"
+         << "6");
+      dock->setWidget(outputList);
+      addDockWidget(Qt::BottomDockWidgetArea, dock);
+      editMenu->addAction(dock->toggleViewAction());
+   }
+
 }

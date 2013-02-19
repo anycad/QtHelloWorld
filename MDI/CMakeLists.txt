@@ -5,7 +5,8 @@ FIND_PACKAGE(Qt5Widgets)
 # C++ Source File
 FILE(GLOB PROJECT_SOURCE_FILES 
 	src/*.cpp
-	src/*.h)
+	src/*.h
+	mdi.rc)
 # QRC Source file	
 SET(PROJECT_QRC Resource.qrc)	
 QT5_ADD_RESOURCES(QRC_SOURCE_FILE ${PROJECT_QRC})

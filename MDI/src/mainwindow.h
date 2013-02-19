@@ -50,6 +50,7 @@ class QMenu;
 class QMdiArea;
 class QMdiSubWindow;
 class QSignalMapper;
+class QListWidget;
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -84,20 +85,26 @@ private:
     void createMenus();
     void createToolBars();
     void createStatusBar();
+    void createDockWindow();
     void readSettings();
     void writeSettings();
     MdiChild *activeMdiChild();
     QMdiSubWindow *findMdiChild(const QString &fileName);
 
     QMdiArea *mdiArea;
+    QListWidget *dockingList;
+    QListWidget* outputList;
+    
     QSignalMapper *windowMapper;
 
     QMenu *fileMenu;
     QMenu *editMenu;
     QMenu *windowMenu;
     QMenu *helpMenu;
+
     QToolBar *fileToolBar;
     QToolBar *editToolBar;
+
     QAction *newAct;
     QAction *openAct;
     QAction *saveAct;
