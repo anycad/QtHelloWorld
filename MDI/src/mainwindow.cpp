@@ -1,8 +1,10 @@
 
-#include <QtWidgets>
+//#include <QtWidgets>
 
 #include "mainwindow.h"
 #include "mdichild.h"
+
+#include <QtGui>
 
 MainWindow::MainWindow()
 {

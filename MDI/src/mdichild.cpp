@@ -1,6 +1,7 @@
 
 
-#include <QtWidgets>
+//#include <QtWidgets>
+#include <QtGui>
 
 #include "mdichild.h"
 
