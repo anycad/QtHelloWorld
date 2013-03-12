@@ -9,14 +9,15 @@
 MainWindow::MainWindow()
 {
     mdiArea = new QMdiArea();
-    mdiArea->setBackground(QBrush(QColor(70,70,70)));
+    mdiArea->setBackground(QBrush(QColor(50,50,50)));
+    
     mdiArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     mdiArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     mdiArea->setViewMode(QMdiArea::TabbedView);
     mdiArea->setTabShape(QTabWidget::Triangular);
     mdiArea->setTabsClosable(true);
     mdiArea->setTabsMovable(true);
-
+   
     setCentralWidget(mdiArea);
     connect(mdiArea, SIGNAL(subWindowActivated(QMdiSubWindow*)),
             this, SLOT(updateMenus()));
@@ -391,6 +392,16 @@ void MainWindow::createDockWindow()
       dock->setWidget(dockingList);
       addDockWidget(Qt::LeftDockWidgetArea, dock);
       editMenu->addAction(dock->toggleViewAction());
+      
+      QTreeWidgetItem* pItem = new QTreeWidgetItem();
+      pItem->setText(0, "Hello");
+      dockingList->addTopLevelItem(pItem);
+
+      QTreeWidgetItem* pItem2 = new QTreeWidgetItem();
+      pItem2->setText(0, "Hello2");
+      pItem->addChild(pItem2);
+
+      dockingList->header()->hide();
    }
    {
       QDockWidget *dock = new QDockWidget(tr("ToolBox"), this);

@@ -1,10 +1,6 @@
 .QWidget {
-   background-color: white;
-}
-
-/* Nice Windows-XP-style password character. */
-QLineEdit[echoMode="2"] {
-    lineedit-password-character: 9679;
+   background-color: rgb(50,50,50);
+   border: 1px solid rgb(50,50,50);
 }
 
 /* Dock */
@@ -14,11 +10,9 @@ QLineEdit[echoMode="2"] {
 
  QDockWidget::title {
      text-align: left; /* align the text to the left */
-     background: rgb(90,90,90);
+     background: rgb(50,50,50);
      padding-left: 5px;
-	 border: 4px solid rgb(90,90,90);
-	 border-top-left-radius: 4px;
-     border-top-right-radius: 4px;
+	 border: 4px solid rgb(50,50,50);
  }
 
  QDockWidget::close-button, QDockWidget::float-button {
@@ -53,7 +47,7 @@ QLineEdit[echoMode="2"] {
 
  /* MenuBar */
   QMenuBar {
-     background-color: rgb(70,70,70);
+     background-color: rgb(50,50,50);
 	 color: white;
 	 min-height: 20px
  }
@@ -77,44 +71,45 @@ QLineEdit[echoMode="2"] {
  /* ToolBar */
   QToolBar {
      background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                                       stop:0 lightgray, stop:1 darkgray);
+                                       stop:0 rgb(50,50,50), stop:1 rgb(50,50,50));
      spacing: 3px; /* spacing between items in the tool bar */
-	 border: 1px solid darkgray
+	 border: 1px solid rgb(80,80,80)
  }
 
  /* Tab */
 
  QTabWidget::pane { /* The tab widget frame */
      border-top: 2px solid #C2C7CB;
-	 background: rgb(70,70,70);
+	 background: rgb(50,50,50);
  }
 
  QTabWidget::tab-bar {
      left: 5px; /* move to the right by 5px */
-	 background: rgb(70,70,70);
+	 background: rgb(50,50,50);
  }
 
-
  QTabBar{
-	background: rgb(70,70,70);
+	background: rgb(50,50,50);
  }
 
  QTabBar::close-buttion{
 	image: url(:/images/checkbox_unchecked.png);
+	subcontrol-position: left;
  }
  /* Style the tab using the tab sub-control. Note that
      it reads QTabBar _not_ QTabWidget */
  QTabBar::tab {
      /*background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
                                        stop:0 white, stop:1 lightgray);
-     border: 1px solid lightgray;									   
+     border: 1px solid rgb(50,50,50);									   
 									   */
-	 background: rgb(70,70,70);
-     border: 1px solid rgb(70,70,70);
+	 background: rgb(50,50,50);
+     border: 1px solid rgb(50,50,50);
 	 color: white;
-
-     border-top-left-radius: 6px;
-     border-top-right-radius: 6px;
+	 /*
+     border-top-left-radius: 4px;
+     border-top-right-radius: 4px;
+	 */
      min-width: 8ex;
      padding: 2px;
 	 margin-top: 2px;
@@ -126,36 +121,39 @@ QLineEdit[echoMode="2"] {
  }
 
  QTabBar::tab:selected {
-     background: wheat;/* qlineargradient(x1:0, y1:0, x2:0, y2:1,
+     background: darkgray;/* qlineargradient(x1:0, y1:0, x2:0, y2:1,
                                        stop:0 wheat, stop:1 white);*/
-     border-color: khaki;
+     border-color: lightgray;
 	 color: black;
  }
 
  /* toolbox */
  QToolBox{
+	background: rgb(50,50,50);
  }
 
  QToolBox::tab
  {
-	 background: rgb(230,230,230);
-     border: 1px solid lightgray;
+	 background: rgb(50,50,50);
+     border: 1px solid rgb(80,80,80);
      padding: 1px;
+	 color: white
  }
 
   QToolBox::tab:hover {
 	border-color: darkgray;
-    background: khaki;
+    background: lightgray;
  }
 
  QToolBox::tab:selected {
-     background: wheat;
-     border-color: darkkhaki;
+     background: darkgray;
+     border-color: lightgray;
+	 color: black
  }
 
   /* QStatusBar */
  QStatusBar {
-     background-color: rgb(70,70,70);
+     background-color: rgb(50,50,50);
 	 color: white;
  }
 
@@ -164,8 +162,15 @@ QLineEdit[echoMode="2"] {
      border-radius: 3px;
  }
 
+ QDialog {
+	background-color: rgb(50,50,50);
+	color: white;
+ }
 
- /* Customize arrows. */
+/* Nice Windows-XP-style password character. */
+QLineEdit[echoMode="2"] {
+    lineedit-password-character: 9679;
+}
 
 /* Customize push buttons and comboboxes. Our read-only combobox
    is very similar to a push button, so they share the same border image. */
@@ -192,15 +197,6 @@ QComboBox[editable="true"]::drop-down:on, QMenuBar::item:on {
     border-width: 5;
 }
 
-QLabel, QAbstractButton {
-    font: bold;
-}
-
-/* Mark mandatory fields with a brownish color. */
-.mandatory {
-    color: brown;
-}
-
 /* Bold text on status bar looks awful. */
 QStatusBar QLabel {
    font: normal;
@@ -213,33 +209,95 @@ QStatusBar::item {
     border-radius: 2;
 }
 
-QComboBox, QLineEdit, QSpinBox, QTextEdit, QListView {
-    background-color: white;
+QComboBox, QLineEdit, QSpinBox, QListView, QTreeView {
+    background-color: rgb(60,60,60);
+	color: white;
+    selection-color: #0a214c; 
+    selection-background-color: #C19A6B;
+	
+}
+
+ QTreeView::branch:has-siblings:!adjoins-item {
+     border-image: url(:/imgtree/vline.png) 0;
+ }
+
+ QTreeView::branch:has-siblings:adjoins-item {
+     border-image: url(:/imgtree/branch-more.png) 0;
+ }
+
+ QTreeView::branch:!has-children:!has-siblings:adjoins-item {
+     border-image: url(:/imgtree/branch-end.png) 0;
+ }
+
+ QTreeView::branch:has-children:!has-siblings:closed,
+ QTreeView::branch:closed:has-children:has-siblings {
+         border-image: none;
+         image: url(:/imgtree/branch-closed.png);
+ }
+
+ QTreeView::branch:open:has-children:!has-siblings,
+ QTreeView::branch:open:has-children:has-siblings  {
+         border-image: none;
+         image: url(:/imgtree/branch-open.png);
+ }
+
+ QTreeView::item:selected {
+     background: rgb(80,80,80);
+	 color: white;
+ }
+
+ QTreeView::item:selected:active{
+     background: rgb(80,80,80);
+	 color: white;
+ }
+
+ QTreeView::item:selected:!active {
+     background: rgb(70,70,70);
+	 color: white;
+ }
+
+ QListView::item:selected {
+     background: rgb(80,80,80);
+	 color: white;
+ }
+
+ QListView::item:selected:active{
+     background: rgb(80,80,80);
+	 color: white;
+ }
+
+ QListView::item:selected:!active {
+     background: rgb(70,70,70);
+	 color: white;
+ }
+
+/*
+QTextEdit {
+    background-color: rgb(60,60,60);
+	color: white;
     selection-color: #0a214c; 
     selection-background-color: #C19A6B;
 }
+*/
 
-QListView {
-    show-decoration-selected: 1;
-}
-
+/*
 QListView::item:hover {
     background-color: wheat;
 }
+*/
 
 /* We reserve 1 pixel space in padding. When we get the focus,
    we kill the padding and enlarge the border. This makes the items
    glow. */
 QLineEdit, QFrame {
-    padding: 2px;
+    padding: 1px;
     border-style: solid;
 }
 
 /* As mentioned above, eliminate the padding and increase the border. */
 QLineEdit:focus, QFrame:focus {
-    border-width: 2px;
-    padding: 0px;
-	border-color: wheat;
+    padding: 1px;
+	border-color: rgb(100,100,100);
 }
 
 /* A QLabel is a QFrame ... */
@@ -247,15 +305,18 @@ QLabel {
     border: none;
     padding: 0;
     background: none;
+	color: white;
 }
 
 /* A QToolTip is a QLabel ... */
+/*
 QToolTip {
     border: 2px solid darkkhaki;
     padding: 5px;
     border-radius: 3px;
     opacity: 200;
 }
+*/
 
 /* Nice to have the background color change when hovered. */
 QRadioButton:hover, QCheckBox:hover {
@@ -267,4 +328,19 @@ QDialogButtonBox {
     button-layout: 0;
 }
 
+QMainWindow::separator {
+     background: rgb(60,60,60);
+     width: 4px; /* when vertical */
+     height: 4px; /* when horizontal */
+ }
 
+ QMainWindow::separator:hover {
+     background: rgb(40,40,40);
+ }
+
+ QScrollBar:horizontal {
+     background: rgb(50,50,50);
+ }
+ QScrollBar:vertical {
+     background: rgb(50,50,50);
+ }

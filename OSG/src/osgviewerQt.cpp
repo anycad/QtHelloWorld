@@ -13,10 +13,12 @@
 
 #include <iostream>
 
-class ViewerWidget : public QWidget, public osgViewer::CompositeViewer
+#include "AuFrame.h"
+
+class ViewerWidget : public Frame, public osgViewer::CompositeViewer
 {
 public:
-    ViewerWidget(osgViewer::ViewerBase::ThreadingModel threadingModel=osgViewer::CompositeViewer::SingleThreaded) : QWidget()
+    ViewerWidget(osgViewer::ViewerBase::ThreadingModel threadingModel=osgViewer::CompositeViewer::SingleThreaded)
     {
         setThreadingModel(threadingModel);
 
@@ -28,12 +30,12 @@ public:
                                             osgDB::readNodeFile("D:\\ThirdParty\\OpenSceneGraph-3.0.1\\data\\cow.osgt") );
         popupWidget->show();
 
-        QGridLayout* grid = new QGridLayout;
+        QGridLayout* grid = new QGridLayout(contentWidget());
         grid->addWidget( widget1, 0, 0 );
         grid->addWidget( widget2, 0, 1 );
         grid->addWidget( widget3, 1, 0 );
         grid->addWidget( widget4, 1, 1 );
-        setLayout( grid );
+        //setLayout( grid );
 
         connect( &_timer, SIGNAL(timeout()), this, SLOT(update()) );
         _timer.start( 10 );

@@ -40,5 +40,11 @@
     <file>images/spindown_off.png</file>
     <file>images/spindown_hover.png</file>
     <file>images/spindown_pressed.png</file>
+
+    <file>imgtree/branch-closed.png</file>
+    <file>imgtree/branch-end.png</file>
+    <file>imgtree/branch-more.png</file>
+    <file>imgtree/branch-open.png</file>
+    <file>imgtree/vline.png</file>
 </qresource>
 </RCC>
